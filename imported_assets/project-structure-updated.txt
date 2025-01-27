@@ -1,0 +1,46 @@
+📁 rag-solutions/
+├── 📁 src/
+│   ├── 📁 components/
+│   │   ├── 📁 ui/           # Composants shadcn/ui
+│   │   ├── 📁 layout/       # Layout components
+│   │   │   ├── Navigation.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   └── Layout.tsx
+│   │   ├── 📁 forms/        # Formulaires et intégration Hubspot
+│   │   │   ├── ContactForm.tsx
+│   │   │   └── DemoForm.tsx
+│   │   └── 📁 shared/       # Composants réutilisables
+│   │
+│   ├── 📁 pages/
+│   │   ├── index.tsx        # Page d'accueil
+│   │   ├── 📁 about/        # Pages À propos
+│   │   │   ├── index.tsx    # Notre mission
+│   │   │   └── rse.tsx      # Engagements RSE
+│   │   ├── 📁 solutions/    # Pages Solutions
+│   │   │   ├── index.tsx
+│   │   │   ├── starter.tsx
+│   │   │   ├── business.tsx
+│   │   │   └── enterprise.tsx
+│   │   ├── 📁 sectors/      # Pages Secteurs
+│   │   │   ├── industry.tsx
+│   │   │   ├── services.tsx
+│   │   │   ├── real-estate.tsx
+│   │   │   ├── music.tsx
+│   │   │   └── customer-service.tsx
+│   │   ├── 📁 resources/    # Pages Ressources
+│   │   │   ├── roi-calculator.tsx
+│   │   │   └── how-it-works.tsx
+│   │   └── community.tsx    # Community Hub
+│   │
+│   ├── 📁 styles/          # Styles
+│   │   ├── globals.css
+│   │   └── tailwind.css
+│   │
+│   └── 📁 utils/           # Utilitaires
+│       ├── hubspot.ts
+│       └── seo.ts
+│
+├── public/                 # Assets statiques
+├── package.json
+├── tailwind.config.js
+└── tsconfig.json
