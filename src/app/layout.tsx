@@ -1,11 +1,12 @@
 import { inter, sourceSans } from '../lib/fonts'
-import ClientLayout from '@/components/layout/ClientLayout'
+import { ClientLayout } from '@/components/layout/ClientLayout'
+import { AnimatedLayout } from '@/components/layout/animated-layout';
 import '@/styles/globals.css'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'RAG Solutions | Intelligence Documentaire pour Entreprises',
-  description: 'Solutions d\'intelligence documentaire basées sur le RAG (Retrieval Augmented Generation) pour les entreprises.',
+  title: 'RAG Solutions - Gestion Documentaire Intelligente',
+  description: 'Solutions RAG pour la gestion documentaire d\'entreprise. Transformez vos documents en intelligence actionnable.',
 }
 
 export default function RootLayout({
@@ -17,7 +18,9 @@ export default function RootLayout({
     <html lang="fr" className={`${inter.variable} ${sourceSans.variable}`} suppressHydrationWarning>
       <body className={`${sourceSans.className} min-h-screen flex flex-col`} suppressHydrationWarning>
         <ClientLayout>
-          {children}
+          <AnimatedLayout>
+            {children}
+          </AnimatedLayout>
         </ClientLayout>
       </body>
     </html>

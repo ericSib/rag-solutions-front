@@ -1,7 +1,7 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useDelayedHover } from './useDelayedHover';
-import { useEffect } from 'react';
 
 export interface NavigationItem {
   label: string;
@@ -14,6 +14,12 @@ export interface NavigationItem {
 }
 
 export function useNavigationMenu(items: NavigationItem[]) {
+  const [activeItem, setActiveItem] = useState<string | null>(null);
+
+  const handleSelect = (href: string) => {
+    setActiveItem(href);
+  };
+
   // Créer les hooks pour chaque menu une seule fois
   const menuStates = items.reduce((acc, item) => {
     if (item.children) {
@@ -40,6 +46,8 @@ export function useNavigationMenu(items: NavigationItem[]) {
   }, [menuStates]);
 
   return {
+    activeItem,
+    handleSelect,
     getMenuState: (label: string) => menuStates[label],
   };
 }

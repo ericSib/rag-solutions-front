@@ -1,3 +1,7 @@
 node_modules
 # Next.js
 .next/
+
+# Imported assets
+/imported_assets/
+imported_assets

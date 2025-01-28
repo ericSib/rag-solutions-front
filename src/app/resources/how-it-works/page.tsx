@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { FileQuestion, Search, Database, ChevronDown, ArrowRight, Brain, Shield, Target } from 'lucide-react';
+import { AnimatedSection } from '@/components/ui/animated-section';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -67,76 +68,87 @@ const HowItWorksPage = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-6">
-              Comment fonctionne notre technologie RAG ?
-            </h1>
-            <p className="text-xl mb-8">
-              Découvrez notre approche innovante de la gestion documentaire intelligente
-            </p>
-          </div>
+          <AnimatedSection animation="fade-up">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+                Comment fonctionne notre solution RAG ?
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                Découvrez comment notre technologie transforme vos documents en connaissance actionnable
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Process Steps */}
-      <section className="py-16 bg-white">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Notre processus en 3 étapes
-          </h2>
+          <AnimatedSection animation="fade-up">
+            <h2 className="text-3xl font-bold text-center mb-12">Notre processus en 3 étapes</h2>
+          </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <FileQuestion className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">1. Analyse</h3>
-                <p className="text-gray-600">
-                  Nous analysons vos documents et les convertissons en données structurées
-                </p>
-              </CardContent>
-            </Card>
+            <AnimatedSection animation="fade-up">
+              <Card>
+                <CardContent className="p-6">
+                  <FileQuestion className="w-12 h-12 text-blue-600 mb-4" />
+                  <h3 className="text-xl font-semibold mb-3">1. Analyse</h3>
+                  <p className="text-gray-600">
+                    Nous analysons vos documents et les convertissons en données structurées
+                  </p>
+                </CardContent>
+              </Card>
+            </AnimatedSection>
 
-            <Card>
-              <CardContent className="p-6">
-                <Search className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">2. Indexation</h3>
-                <p className="text-gray-600">
-                  Les informations sont indexées pour une recherche ultra-rapide
-                </p>
-              </CardContent>
-            </Card>
+            <AnimatedSection animation="fade-up" delay={100}>
+              <Card>
+                <CardContent className="p-6">
+                  <Search className="w-12 h-12 text-blue-600 mb-4" />
+                  <h3 className="text-xl font-semibold mb-3">2. Indexation</h3>
+                  <p className="text-gray-600">
+                    Les informations sont indexées pour une recherche ultra-rapide
+                  </p>
+                </CardContent>
+              </Card>
+            </AnimatedSection>
 
-            <Card>
-              <CardContent className="p-6">
-                <Database className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">3. Exploitation</h3>
-                <p className="text-gray-600">
-                  Accédez instantanément à vos informations via une interface intuitive
-                </p>
-              </CardContent>
-            </Card>
+            <AnimatedSection animation="fade-up" delay={200}>
+              <Card>
+                <CardContent className="p-6">
+                  <Database className="w-12 h-12 text-blue-600 mb-4" />
+                  <h3 className="text-xl font-semibold mb-3">3. Exploitation</h3>
+                  <p className="text-gray-600">
+                    Accédez instantanément à vos informations via une interface intuitive
+                  </p>
+                </CardContent>
+              </Card>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Questions fréquentes
-          </h2>
+          <AnimatedSection animation="fade-up">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Questions fréquentes
+            </h2>
+          </AnimatedSection>
           <div className="max-w-3xl mx-auto">
             {FAQS.map((faq, index) => (
-              <FAQItem
-                key={index}
-                question={faq.question}
-                answer={faq.answer}
-                isOpen={openIndex === index}
-                onToggle={() => toggleFAQ(index)}
-              />
+              <AnimatedSection key={index} animation="fade-up" delay={index * 100}>
+                <FAQItem
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openIndex === index}
+                  onToggle={() => toggleFAQ(index)}
+                />
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -154,27 +166,31 @@ const HowItWorksPage = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Card className="bg-red-50">
-            <CardContent className="p-6">
-              <FileQuestion className="w-8 h-8 text-red-600 mb-4" />
-              <h3 className="font-semibold mb-2">Le problème des hallucinations</h3>
-              <p className="text-gray-600">
-                L'IA générative peut inventer des informations plausibles mais fausses, 
-                créant un risque majeur pour la prise de décision.
-              </p>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up">
+            <Card className="bg-red-50">
+              <CardContent className="p-6">
+                <FileQuestion className="w-8 h-8 text-red-600 mb-4" />
+                <h3 className="font-semibold mb-2">Le problème des hallucinations</h3>
+                <p className="text-gray-600">
+                  L'IA générative peut inventer des informations plausibles mais fausses, 
+                  créant un risque majeur pour la prise de décision.
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
 
-          <Card className="bg-red-50">
-            <CardContent className="p-6">
-              <Shield className="w-8 h-8 text-red-600 mb-4" />
-              <h3 className="font-semibold mb-2">La confidentialité des données</h3>
-              <p className="text-gray-600">
-                L'envoi de documents confidentiels vers des modèles externes 
-                pose des problèmes de sécurité et de conformité.
-              </p>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up" delay={100}>
+            <Card className="bg-red-50">
+              <CardContent className="p-6">
+                <Shield className="w-8 h-8 text-red-600 mb-4" />
+                <h3 className="font-semibold mb-2">La confidentialité des données</h3>
+                <p className="text-gray-600">
+                  L'envoi de documents confidentiels vers des modèles externes 
+                  pose des problèmes de sécurité et de conformité.
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -190,35 +206,41 @@ const HowItWorksPage = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <Card>
-            <CardContent className="p-6">
-              <Search className="w-8 h-8 text-blue-600 mb-4" />
-              <h3 className="font-semibold mb-2">1. Recherche</h3>
-              <p className="text-gray-600">
-                Identifie précisément les informations pertinentes dans votre base documentaire
-              </p>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up">
+            <Card>
+              <CardContent className="p-6">
+                <Search className="w-8 h-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold mb-2">1. Recherche</h3>
+                <p className="text-gray-600">
+                  Identifie précisément les informations pertinentes dans votre base documentaire
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
 
-          <Card>
-            <CardContent className="p-6">
-              <Brain className="w-8 h-8 text-blue-600 mb-4" />
-              <h3 className="font-semibold mb-2">2. Analyse</h3>
-              <p className="text-gray-600">
-                Comprend le contexte et relie les informations entre elles
-              </p>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up" delay={100}>
+            <Card>
+              <CardContent className="p-6">
+                <Brain className="w-8 h-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold mb-2">2. Analyse</h3>
+                <p className="text-gray-600">
+                  Comprend le contexte et relie les informations entre elles
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
 
-          <Card>
-            <CardContent className="p-6">
-              <Database className="w-8 h-8 text-blue-600 mb-4" />
-              <h3 className="font-semibold mb-2">3. Restitue</h3>
-              <p className="text-gray-600">
-                Fournit des réponses basées uniquement sur vos documents vérifiés
-              </p>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up" delay={200}>
+            <Card>
+              <CardContent className="p-6">
+                <Database className="w-8 h-8 text-blue-600 mb-4" />
+                <h3 className="font-semibold mb-2">3. Restitue</h3>
+                <p className="text-gray-600">
+                  Fournit des réponses basées uniquement sur vos documents vérifiés
+                </p>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -227,139 +249,141 @@ const HowItWorksPage = () => {
         <h2 className="text-3xl font-bold mb-6">Pourquoi le RAG est Idéal pour l'Entreprise</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="bg-blue-50">
-            <CardContent className="p-6">
-              <h3 className="font-semibold mb-2">Fiabilité</h3>
-              <ul className="space-y-2 text-gray-600 text-sm">
-                <li>• Répond uniquement avec vos données vérifiées</li>
-                <li>• Élimine le risque d'hallucinations</li>
-                <li>• Traçabilité complète des réponses</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up">
+            <Card className="bg-blue-50">
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-2">Fiabilité</h3>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li>• Répond uniquement avec vos données vérifiées</li>
+                  <li>• Élimine le risque d'hallucinations</li>
+                  <li>• Traçabilité complète des réponses</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
 
-          <Card className="bg-blue-50">
-            <CardContent className="p-6">
-              <h3 className="font-semibold mb-2">Sécurité</h3>
-              <ul className="space-y-2 text-gray-600 text-sm">
-                <li>• Vos données restent dans votre infrastructure</li>
-                <li>• Conformité RGPD native</li>
-                <li>• Contrôle total sur les accès</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up" delay={100}>
+            <Card className="bg-blue-50">
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-2">Sécurité</h3>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li>• Vos données restent dans votre infrastructure</li>
+                  <li>• Conformité RGPD native</li>
+                  <li>• Contrôle total sur les accès</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
 
-          <Card className="bg-blue-50">
-            <CardContent className="p-6">
-              <h3 className="font-semibold mb-2">Gain de temps</h3>
-              <ul className="space-y-2 text-gray-600 text-sm">
-                <li>• Recherche instantanée dans tous les documents</li>
-                <li>• Compréhension du contexte métier</li>
-                <li>• Réponses ciblées et pertinentes</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <AnimatedSection animation="fade-up" delay={200}>
+            <Card className="bg-blue-50">
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-2">Gain de temps</h3>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li>• Recherche instantanée dans tous les documents</li>
+                  <li>• Compréhension du contexte métier</li>
+                  <li>• Réponses ciblées et pertinentes</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Notre Processus</h2>
-          
+          <AnimatedSection animation="fade-up">
+            <h2 className="text-3xl font-bold mb-12 text-center">Notre Processus</h2>
+          </AnimatedSection>
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                  <Brain className="w-8 h-8 text-blue-600" />
+              <AnimatedSection animation="fade-up">
+                <div className="text-center">
+                  <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                    <Brain className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Analyse initiale</h3>
+                  <p className="text-gray-600">Évaluation de votre patrimoine documentaire et de vos besoins spécifiques</p>
                 </div>
-                <h3 className="font-semibold mb-2">Analyse initiale</h3>
-                <p className="text-gray-600">Évaluation de votre patrimoine documentaire et de vos besoins spécifiques</p>
-              </div>
+              </AnimatedSection>
 
-              <div className="text-center">
-                <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                  <Shield className="w-8 h-8 text-blue-600" />
+              <AnimatedSection animation="fade-up" delay={100}>
+                <div className="text-center">
+                  <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                    <Shield className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Déploiement sécurisé</h3>
+                  <p className="text-gray-600">Installation dans votre infrastructure avec sécurité maximale</p>
                 </div>
-                <h3 className="font-semibold mb-2">Déploiement sécurisé</h3>
-                <p className="text-gray-600">Installation dans votre infrastructure avec sécurité maximale</p>
-              </div>
+              </AnimatedSection>
 
-              <div className="text-center">
-                <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                  <Target className="w-8 h-8 text-blue-600" />
+              <AnimatedSection animation="fade-up" delay={200}>
+                <div className="text-center">
+                  <div className="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                    <Target className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold mb-2">Accompagnement</h3>
+                  <p className="text-gray-600">Formation et support pour une adoption réussie</p>
                 </div>
-                <h3 className="font-semibold mb-2">Accompagnement</h3>
-                <p className="text-gray-600">Formation et support pour une adoption réussie</p>
-              </div>
+              </AnimatedSection>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Questions fréquentes
-          </h2>
-          <div className="max-w-3xl mx-auto">
-            {FAQS.map((faq, index) => (
-              <FAQItem
-                key={index}
-                question={faq.question}
-                answer={faq.answer}
-                isOpen={openIndex === index}
-                onToggle={() => toggleFAQ(index)}
-              />
-            ))}
           </div>
         </div>
       </section>
 
       {/* Results Section */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Des Résultats Prouvés</h2>
-          
+          <AnimatedSection animation="fade-up">
+            <h2 className="text-3xl font-bold mb-12 text-center">Des Résultats Prouvés</h2>
+          </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">-65%</div>
-              <p className="text-gray-600">de temps passé à chercher l'information</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">6 mois</div>
-              <p className="text-gray-600">en moyenne pour un ROI positif</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
-              <p className="text-gray-600">de satisfaction utilisateur</p>
-            </div>
+            <AnimatedSection animation="fade-up">
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">-65%</div>
+                <p className="text-gray-600">de temps passé à chercher l'information</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fade-up" delay={100}>
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">6 mois</div>
+                <p className="text-gray-600">en moyenne pour un ROI positif</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection animation="fade-up" delay={200}>
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
+                <p className="text-gray-600">de satisfaction utilisateur</p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Prêt à transformer votre gestion documentaire ?
-          </h2>
-          <p className="text-xl mb-8">
-            Découvrez comment notre solution s'adapte à vos besoins
-          </p>
-          <Link 
-            href="/demo" 
-            className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
-          >
-            Demander une démo
-            <ArrowRight className="h-5 w-5" />
-          </Link>
+          <AnimatedSection animation="fade-up">
+            <h2 className="text-3xl font-bold mb-6">
+              Prêt à transformer votre gestion documentaire ?
+            </h2>
+            <p className="text-xl mb-8">
+              Découvrez comment notre solution s'adapte à vos besoins
+            </p>
+            <Link 
+              href="/demo" 
+              className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+            >
+              Demander une démo
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 

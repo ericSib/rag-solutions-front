@@ -5,7 +5,10 @@ const nextConfig = {
     domains: ['images.unsplash.com'],
   },
   experimental: {
-    appDir: true
+    serverActions: {
+      bodySizeLimit: '2mb',
+      allowedOrigins: ['localhost:3000'],
+    },
   },
   async redirects() {
     return [

@@ -3,6 +3,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronRight, Shield, Zap, Users, Calendar, ArrowRight } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import SuccessStories from '@/components/sections/SuccessStories';
+import FAQ from '@/components/sections/FAQ';
+import { AnimatedSection } from '@/components/ui/animated-section';
 
 // Custom hook for intersection observer
 const useIntersectionObserver = (options = {}) => {
@@ -127,33 +131,36 @@ const BlogPostCard = ({ title, excerpt, date, imageUrl, category, readTime, href
   );
 };
 
-// Main Homepage Component
 export default function Homepage() {
   return (
-    <div className="w-full">
+    <main>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">
-              Libérez le potentiel de vos données d'entreprise
-            </h1>
-            <p className="text-xl mb-8">
-              Transformez votre patrimoine documentaire en avantage compétitif grâce à nos solutions RAG sécurisées. Accédez instantanément à la bonne information, au bon moment.
-            </p>
-            <div className="flex justify-center gap-4">
-              <Link 
-                href="/demo" 
-                className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
-              >
-                Demander un devis
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-              <button className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
-                Découvrir nos solutions
-              </button>
+      <section className="relative bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4 py-20 lg:py-32">
+          <AnimatedSection animation="fade-up">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                Transformez vos documents en intelligence actionnable
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Notre solution RAG (Retrieval-Augmented Generation) révolutionne la gestion de vos documents d'entreprise.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
+                  <Link href="/demo" className="flex items-center">
+                    Demander une démo
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-blue-200 hover:bg-blue-50">
+                  <Link href="/contact" className="flex items-center">
+                    Nous contacter
+                    <ChevronRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -275,7 +282,7 @@ export default function Homepage() {
               </ul>
               <Link 
                 href="/demo" 
-                className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Demander un devis
                 <ArrowRight className="h-5 w-5" />
@@ -304,7 +311,7 @@ export default function Homepage() {
               </ul>
               <Link 
                 href="/demo" 
-                className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Demander un devis
                 <ArrowRight className="h-5 w-5" />
@@ -330,7 +337,7 @@ export default function Homepage() {
               </ul>
               <Link 
                 href="/demo" 
-                className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Demander un devis
                 <ArrowRight className="h-5 w-5" />
@@ -340,79 +347,11 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* Use Cases Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Ils nous font confiance</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <p className="text-gray-600 italic mb-4">
-                "L'implémentation du RAG chez Suez Digital Solutions a transformé notre approche de la gestion des ressources en eau. Nous avons amélioré de 55% la rapidité de nos interventions sur le terrain grâce à un accès instantané aux données historiques et techniques."
-              </p>
-              <div>
-                <p className="font-semibold">Amélie Renard</p>
-                <p className="text-gray-600">Responsable des Opérations Digitales, Suez Digital Solutions</p>
-              </div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <p className="text-gray-600 italic mb-4">
-                "Notre solution RAG a transformé notre service client. Nous avons réduit de 50% le temps de résolution des tickets et augmenté de 30% la satisfaction client grâce à des réponses plus précises et contextualisées."
-              </p>
-              <div>
-                <p className="font-semibold">Thomas Martin</p>
-                <p className="text-gray-600">DSI, Global Services Corp</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Success Stories Section */}
+      <SuccessStories />
 
-      {/* Latest Blog Posts Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Nos actualités
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <BlogPostCard
-              title="5 bonnes pratiques pour optimiser votre RAG"
-              excerpt="Découvrez comment maximiser l'efficacité de votre solution RAG avec nos conseils d'experts."
-              date="2024-01-15"
-              imageUrl="/api/placeholder/800/400"
-              category="Guide"
-              readTime="5 min"
-              href="/blog/optimiser-rag"
-            />
-            <BlogPostCard
-              title="Cas client : Comment AutoTech a transformé sa documentation"
-              excerpt="Une étude de cas détaillée sur l'implémentation réussie de RAG Solutions chez AutoTech Industries."
-              date="2024-01-10"
-              imageUrl="/api/placeholder/800/400"
-              category="Cas Client"
-              readTime="8 min"
-              href="/blog/cas-client-autotech"
-            />
-            <BlogPostCard
-              title="L'importance de la sécurité dans le RAG"
-              excerpt="Comprendre les enjeux de sécurité dans l'implémentation d'une solution RAG en entreprise."
-              date="2024-01-05"
-              imageUrl="/api/placeholder/800/400"
-              category="Sécurité"
-              readTime="6 min"
-              href="/blog/securite-rag"
-            />
-          </div>
-          <div className="text-center mt-8">
-            <a 
-              href="/blog" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
-            >
-              Voir tous nos articles
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* CTA Section */}
       <section className="bg-blue-600 text-white py-16">
@@ -425,13 +364,13 @@ export default function Homepage() {
           </p>
           <Link 
             href="/demo" 
-            className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             Demander une démo
             <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
