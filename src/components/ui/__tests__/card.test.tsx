@@ -28,13 +28,11 @@ describe('Card Components', () => {
 
   it('applies custom className to card', () => {
     const { container } = renderCard({ className: 'custom-class' })
-
-    const card = container.firstChild
-    expect(card).toHaveClass('custom-class')
+    expect(container.firstChild).toHaveClass('custom-class')
   })
 
   it('renders card header with custom className', () => {
-    const { container } = render(
+    render(
       <Card>
         <CardHeader className="custom-header">
           <CardTitle>Test Title</CardTitle>
@@ -42,12 +40,11 @@ describe('Card Components', () => {
       </Card>
     )
 
-    const header = container.querySelector('.custom-header')
-    expect(header).toBeInTheDocument()
+    expect(screen.getByText('Test Title').closest('.custom-header')).toBeInTheDocument()
   })
 
   it('renders card content with custom className', () => {
-    const { container } = render(
+    render(
       <Card>
         <CardContent className="custom-content">
           Test Content
@@ -55,8 +52,7 @@ describe('Card Components', () => {
       </Card>
     )
 
-    const content = container.querySelector('.custom-content')
-    expect(content).toBeInTheDocument()
+    expect(screen.getByText('Test Content').closest('.custom-content')).toBeInTheDocument()
   })
 
   it('forwards ref to card component', () => {
@@ -93,18 +89,18 @@ describe('Card Components', () => {
     expect(screen.getByText('Main Description')).toBeInTheDocument()
     expect(screen.getByText('Subtitle')).toBeInTheDocument()
     expect(screen.getByText('Nested Content')).toBeInTheDocument()
-    expect(screen.getByText('Action Button')).toBeInTheDocument()
-    expect(screen.getByText('Cancel')).toBeInTheDocument()
-    expect(screen.getByText('Submit')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Action Button' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Cancel' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Submit' })).toBeInTheDocument()
   })
 
   it('maintains proper nesting structure', () => {
     const { container } = renderCard()
-
     const card = container.firstChild as HTMLElement
-    expect(card.firstChild).toHaveClass('flex flex-col space-y-1.5 p-6') // CardHeader
-    expect(card.children[1]).toHaveClass('p-6 pt-0') // CardContent
-    expect(card.lastChild).toHaveClass('flex items-center p-6 pt-0') // CardFooter
+    
+    expect(card.firstChild).toHaveClass('flex flex-col space-y-1.5 p-6')
+    expect(card.children[1]).toHaveClass('p-6 pt-0')
+    expect(card.lastChild).toHaveClass('flex items-center p-6 pt-0')
   })
 
   it('handles click events on card', async () => {
@@ -118,7 +114,37 @@ describe('Card Components', () => {
     )
 
     await user.click(screen.getByText('Clickable Content'))
-    expect(handleClick).toHaveBeenCalled()
+    expect(handleClick).toHaveBeenCalledTimes(1)
+  })
+
+  it('handles keyboard navigation', async () => {
+    const user = userEvent.setup()
+    
+    render(
+      <Card tabIndex={0}>
+        <CardContent>
+          <button>First Button</button>
+          <button>Second Button</button>
+        </CardContent>
+      </Card>
+    )
+
+    await user.tab()
+    expect(screen.getByRole('button', { name: 'First Button' })).toHaveFocus()
+
+    await user.tab()
+    expect(screen.getByRole('button', { name: 'Second Button' })).toHaveFocus()
+  })
+
+  it('supports data attributes', () => {
+    render(
+      <Card data-testid="test-card" data-custom="custom-value">
+        <CardContent>Test Content</CardContent>
+      </Card>
+    )
+
+    const card = screen.getByTestId('test-card')
+    expect(card).toHaveAttribute('data-custom', 'custom-value')
   })
 
   it('applies hover styles correctly', () => {
@@ -145,35 +171,5 @@ describe('Card Components', () => {
     )
 
     expect(screen.queryByText('Test Footer')).not.toBeInTheDocument()
-  })
-
-  it('supports data attributes', () => {
-    const { container } = render(
-      <Card data-testid="test-card" data-custom="custom-value">
-        <CardContent>Test Content</CardContent>
-      </Card>
-    )
-
-    const card = container.firstChild as HTMLElement
-    expect(card).toHaveAttribute('data-testid', 'test-card')
-    expect(card).toHaveAttribute('data-custom', 'custom-value')
-  })
-
-  it('handles keyboard navigation', async () => {
-    const user = userEvent.setup()
-    render(
-      <Card tabIndex={0}>
-        <CardContent>
-          <button>First Button</button>
-          <button>Second Button</button>
-        </CardContent>
-      </Card>
-    )
-
-    await user.tab()
-    expect(screen.getByText('First Button')).toHaveFocus()
-
-    await user.tab()
-    expect(screen.getByText('Second Button')).toHaveFocus()
   })
 })
