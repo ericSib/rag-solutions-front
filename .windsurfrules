@@ -1,0 +1,46 @@
+Framework et Base Technique
+- Next.js 15.1.4 avec App Router
+- Routes basées sur les dossiers (app/)
+- Server Components par défaut
+- Client Components quand nécessaire (use client)
+
+Architecture Applicative
+- /app/ - Routes et pages
+- /components/ - Composants réutilisables
+- /lib/ - Utilitaires et configurations
+- /public/ - Assets statiques
+- /styles/ - Styles globaux
+
+Conventions de Nommage
+- Pages: page.tsx dans chaque dossier de route 
+- Layouts: layout.tsx pour les mises en page
+- Components: PascalCase (ex: CaseStudyCard.tsx)
+- Utils: camelCase (ex: formatDate.ts)
+
+Data et Formulaires
+- Intégration Hubspot pour les formulaires
+- API routes dans app/api/
+- Redirection blog vers blog.ragsolutions.tech
+
+Design System
+- TailwindCSS pour le styling
+- shadcn/ui pour les composants UI
+- Palette: #2563EB (bleu principal)
+- Fonts: Inter (titres), Source Sans Pro (texte)
+
+Limites et Restrictions
+- Ne pas modifier next.config.js sans validation
+- Préserver la structure des routes
+- Maintenir la séparation client/server components
+- Respecter le typage TypeScript strict
+
+Performance et Tests
+- Optimisation des images via next/image
+- Utilisation appropriée de la mise en cache
+- Tests avec Jest et React Testing Library
+- Respect des Core Web Vitals
+
+Déploiement
+- Configuration Vercel 
+- Variables d'environnement sécurisées 
+- CDN pour les assets statiques

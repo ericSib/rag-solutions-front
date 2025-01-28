@@ -1,5 +1,5 @@
 import { inter, sourceSans } from '../lib/fonts'
-import Layout from '@/components/layout/Layout'
+import ClientLayout from '@/components/layout/ClientLayout'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
 
@@ -14,11 +14,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${sourceSans.variable}`}>
-      <body className={sourceSans.className}>
-        <Layout>
+    <html lang="fr" className={`${inter.variable} ${sourceSans.variable}`} suppressHydrationWarning>
+      <body className={`${sourceSans.className} min-h-screen flex flex-col`} suppressHydrationWarning>
+        <ClientLayout>
           {children}
-        </Layout>
+        </ClientLayout>
       </body>
     </html>
   )
