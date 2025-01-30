@@ -33,11 +33,12 @@ interface CaseStudyProps {
 const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imageUrl }) => (
   <Card className="h-full">
     <CardContent className="p-6">
-      <div className="mb-4">
+      <div className="mb-4 relative w-full h-48">
         <Image 
           src={imageUrl} 
           alt={`${company} - ${title}`}
-          className="w-full h-48 object-cover rounded-lg"
+          fill
+          className="object-cover rounded-lg"
         />
       </div>
       <div className="space-y-4">
@@ -61,7 +62,40 @@ const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imag
   </Card>
 );
 
-export default function ProfessionalServicesPage() {
+const ProfessionalServicesPage: React.FC = () => {
+  const caseStudies = [
+    {
+      title: "Gestion des connaissances",
+      company: "Cabinet de Conseil International",
+      imageUrl: "/images/use-cases/pro-services-1.jpg",
+      results: [
+        "Gain de 12h/consultant/mois",
+        "Réutilisation expertise +60%",
+        "Satisfaction client +40%"
+      ]
+    },
+    {
+      title: "Transformation digitale",
+      company: "Cabinet d'Avocats",
+      imageUrl: "/images/use-cases/pro-services-2.jpg",
+      results: [
+        "Temps recherche -70%",
+        "Productivité +35%",
+        "Conformité renforcée"
+      ]
+    },
+    {
+      title: "Innovation collaborative",
+      company: "Société d'Audit Big 4",
+      imageUrl: "/images/use-cases/pro-services-3.jpg",
+      results: [
+        "Collaboration +45%",
+        "Qualité livrables +30%",
+        "Time-to-market -25%"
+      ]
+    }
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -190,36 +224,15 @@ export default function ProfessionalServicesPage() {
             Découvrez comment notre approche RAG optimise la gestion des connaissances dans les services professionnels à travers ces premiers projets pilotes
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <CaseStudyCard 
-              title="Gestion des connaissances"
-              company="Cabinet de Conseil International"
-              results={[
-                "Gain de 12h/consultant/mois",
-                "Réutilisation expertise +60%",
-                "Satisfaction client +40%"
-              ]}
-              imageUrl="/images/use-cases/pro-services-1.jpg"
-            />
-            <CaseStudyCard 
-              title="Transformation digitale"
-              company="Cabinet d'Avocats"
-              results={[
-                "Temps recherche -70%",
-                "Productivité +35%",
-                "Conformité renforcée"
-              ]}
-              imageUrl="/images/use-cases/pro-services-2.jpg"
-            />
-            <CaseStudyCard 
-              title="Innovation collaborative"
-              company="Société d'Audit Big 4"
-              results={[
-                "Collaboration +45%",
-                "Qualité livrables +30%",
-                "Time-to-market -25%"
-              ]}
-              imageUrl="/images/use-cases/pro-services-3.jpg"
-            />
+            {caseStudies.map((study, index) => (
+              <CaseStudyCard 
+                key={index}
+                title={study.title}
+                company={study.company}
+                results={study.results}
+                imageUrl={study.imageUrl}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -293,4 +306,6 @@ export default function ProfessionalServicesPage() {
       </section>
     </>
   );
-}
+};
+
+export default ProfessionalServicesPage;

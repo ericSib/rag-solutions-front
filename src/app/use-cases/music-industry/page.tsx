@@ -3,15 +3,17 @@ import { Music, FileText, Shield, Globe, BarChart3, ArrowRight, ChevronRight, Ta
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const CaseStudyCard = ({ title, company, results, imageUrl }) => (
   <Card className="h-full">
     <CardContent className="p-6">
-      <div className="mb-4">
-        <img 
+      <div className="mb-4 relative w-full h-48">
+        <Image 
           src={imageUrl} 
-          alt={company} 
-          className="w-full h-48 object-cover rounded-lg"
+          alt={`${company} - ${title}`}
+          fill
+          className="object-cover rounded-lg"
         />
       </div>
       <div className="space-y-4">
@@ -32,6 +34,39 @@ const CaseStudyCard = ({ title, company, results, imageUrl }) => (
 );
 
 const MusicIndustryPage = () => {
+  const caseStudies = [
+    {
+      title: "Gestion des droits",
+      company: "Label Musical Major",
+      imageUrl: "/images/use-cases/music-1.jpg",
+      results: [
+        "Gestion droits optimisée 50%",
+        "Revenus streaming +25%",
+        "Litiges -40%"
+      ]
+    },
+    {
+      title: "Organisation catalogues",
+      company: "Label Indépendant",
+      imageUrl: "/images/use-cases/music-2.jpg",
+      results: [
+        "Efficacité administrative +60%",
+        "Temps négociation -30%",
+        "Revenus +20%"
+      ]
+    },
+    {
+      title: "Distribution internationale",
+      company: "Éditeur Musical",
+      imageUrl: "/images/use-cases/music-3.jpg",
+      results: [
+        "Suivi territorial amélioré 45%",
+        "Conformité accords +70%",
+        "Reporting optimisé 35%"
+      ]
+    }
+  ];
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -142,36 +177,15 @@ const MusicIndustryPage = () => {
             Découvrez comment notre approche RAG optimise la gestion des droits et catalogues musicaux à travers ces premiers projets pilotes
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <CaseStudyCard 
-              title="Gestion des droits"
-              company="Label Musical Major"
-              results={[
-                "Gestion droits optimisée 50%",
-                "Revenus streaming +25%",
-                "Litiges -40%"
-              ]}
-              imageUrl="/images/use-cases/music-1.jpg"
-            />
-            <CaseStudyCard 
-              title="Organisation catalogues"
-              company="Label Indépendant"
-              results={[
-                "Efficacité administrative +60%",
-                "Temps négociation -30%",
-                "Revenus +20%"
-              ]}
-              imageUrl="/images/use-cases/music-2.jpg"
-            />
-            <CaseStudyCard 
-              title="Distribution internationale"
-              company="Éditeur Musical"
-              results={[
-                "Suivi territorial amélioré 45%",
-                "Conformité accords +70%",
-                "Reporting optimisé 35%"
-              ]}
-              imageUrl="/images/use-cases/music-3.jpg"
-            />
+            {caseStudies.map((study, index) => (
+              <CaseStudyCard 
+                key={index}
+                title={study.title}
+                company={study.company}
+                results={study.results}
+                imageUrl={study.imageUrl}
+              />
+            ))}
           </div>
         </div>
       </section>

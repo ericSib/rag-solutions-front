@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   title: 'RAG Solutions - Gestion Documentaire Intelligente',
   description: 'Solutions RAG pour la gestion documentaire d\'entreprise. Transformez vos documents en intelligence actionnable.',
   metadataBase: new URL('https://ragsolutions.tech'),
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: ['/logo.svg'],
+    apple: [
+      { url: '/logo.svg' }
+    ]
+  }
 }
 
 export default function RootLayout({

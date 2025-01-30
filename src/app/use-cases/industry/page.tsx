@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Package, Shield, Zap, Users, BarChart3, ArrowRight, ChevronRight } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -21,11 +22,12 @@ interface CaseStudyProps {
 const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imageUrl }) => (
   <Card className="h-full">
     <CardContent className="p-6">
-      <div className="mb-4">
-        <img 
+      <div className="mb-4 relative w-full h-48">
+        <Image 
           src={imageUrl} 
           alt={`${company} - ${title}`}
-          className="w-full h-48 object-cover rounded-lg"
+          fill
+          className="object-cover rounded-lg"
         />
       </div>
       <div className="space-y-4">
@@ -46,6 +48,39 @@ const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imag
 );
 
 const IndustryPage: React.FC = () => {
+  const caseStudies = [
+    {
+      title: "Optimisation documentation technique",
+      company: "Constructeur Automobile International",
+      imageUrl: "/images/use-cases/industry-1.jpg",
+      results: [
+        "Temps de recherche réduit de 65%",
+        "Erreurs de production -45%",
+        "ROI atteint en 8 mois"
+      ]
+    },
+    {
+      title: "Transformation digitale",
+      company: "PME Industrie de Précision",
+      imageUrl: "/images/use-cases/industry-2.jpg",
+      results: [
+        "Onboarding nouveaux -40%",
+        "Productivité maintenance +25%",
+        "Satisfaction employés +35%"
+      ]
+    },
+    {
+      title: "Conformité & Qualité",
+      company: "Groupe Manufacturing International",
+      imageUrl: "/images/use-cases/industry-3.jpg",
+      results: [
+        "Temps audit divisé par 2",
+        "Conformité ISO 9001 simplifiée",
+        "Zéro non-conformité majeure"
+      ]
+    }
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -172,36 +207,15 @@ const IndustryPage: React.FC = () => {
             Découvrez comment notre approche RAG transforme concrètement la gestion documentaire industrielle à travers ces premiers projets pilotes
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <CaseStudyCard 
-              title="Optimisation documentation technique"
-              company="Constructeur Automobile International"
-              results={[
-                "Temps de recherche réduit de 65%",
-                "Erreurs de production -45%",
-                "ROI atteint en 8 mois"
-              ]}
-              imageUrl="/images/use-cases/industry-1.jpg"
-            />
-            <CaseStudyCard 
-              title="Transformation digitale"
-              company="PME Industrie de Précision"
-              results={[
-                "Onboarding nouveaux -40%",
-                "Productivité maintenance +25%",
-                "Satisfaction employés +35%"
-              ]}
-              imageUrl="/images/use-cases/industry-2.jpg"
-            />
-            <CaseStudyCard 
-              title="Conformité & Qualité"
-              company="Groupe Manufacturing International"
-              results={[
-                "Temps audit divisé par 2",
-                "Conformité ISO 9001 simplifiée",
-                "Zéro non-conformité majeure"
-              ]}
-              imageUrl="/images/use-cases/industry-3.jpg"
-            />
+            {caseStudies.map((study, index) => (
+              <CaseStudyCard 
+                key={index}
+                title={study.title}
+                company={study.company}
+                results={study.results}
+                imageUrl={study.imageUrl}
+              />
+            ))}
           </div>
         </div>
       </section>

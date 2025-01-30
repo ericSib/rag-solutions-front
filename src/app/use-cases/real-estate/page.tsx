@@ -3,15 +3,24 @@ import { Building, FileText, Users, Clock, BarChart3, ArrowRight, ChevronRight, 
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import Image from 'next/image';
 
-const CaseStudyCard = ({ title, company, results, imageUrl }) => (
+interface CaseStudyProps {
+  title: string;
+  company: string;
+  results: string[];
+  imageUrl: string;
+}
+
+const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imageUrl }) => (
   <Card className="h-full">
     <CardContent className="p-6">
-      <div className="mb-4">
-        <img 
+      <div className="mb-4 relative w-full h-48">
+        <Image 
           src={imageUrl} 
-          alt={company} 
-          className="w-full h-48 object-cover rounded-lg"
+          alt={`${company} - ${title}`}
+          fill
+          className="object-cover rounded-lg"
         />
       </div>
       <div className="space-y-4">
@@ -32,6 +41,39 @@ const CaseStudyCard = ({ title, company, results, imageUrl }) => (
 );
 
 const RealEstatePage = () => {
+  const caseStudies = [
+    {
+      title: "Gestion de parc résidentiel",
+      company: "Groupe Immobilier National",
+      imageUrl: "/images/use-cases/real-estate-1.jpg",
+      results: [
+        "Temps réponse locataires -70%",
+        "Efficacité gestion +45%",
+        "Contentieux -30%"
+      ]
+    },
+    {
+      title: "Digitalisation gestion locative",
+      company: "Agence Immobilière Régionale",
+      imageUrl: "/images/use-cases/real-estate-2.jpg",
+      results: [
+        "Traitement demandes +60%",
+        "Satisfaction locataires +40%",
+        "Coûts administratifs -25%"
+      ]
+    },
+    {
+      title: "Conformité réglementaire",
+      company: "Gestionnaire de Copropriétés",
+      imageUrl: "/images/use-cases/real-estate-3.jpg",
+      results: [
+        "Temps audit divisé par 2",
+        "Mises à jour réglementaires +90%",
+        "Risques juridiques -40%"
+      ]
+    }
+  ];
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -142,36 +184,15 @@ const RealEstatePage = () => {
             Découvrez comment notre approche RAG transforme la gestion immobilière à travers ces premiers projets pilotes
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <CaseStudyCard 
-              title="Gestion de parc résidentiel"
-              company="Groupe Immobilier National"
-              results={[
-                "Temps réponse locataires -70%",
-                "Efficacité gestion +45%",
-                "Contentieux -30%"
-              ]}
-              imageUrl="/images/use-cases/real-estate-1.jpg"
-            />
-            <CaseStudyCard 
-              title="Digitalisation gestion locative"
-              company="Agence Immobilière Régionale"
-              results={[
-                "Traitement demandes +60%",
-                "Satisfaction locataires +40%",
-                "Coûts administratifs -25%"
-              ]}
-              imageUrl="/images/use-cases/real-estate-2.jpg"
-            />
-            <CaseStudyCard 
-              title="Conformité réglementaire"
-              company="Gestionnaire de Copropriétés"
-              results={[
-                "Temps audit divisé par 2",
-                "Mises à jour réglementaires +90%",
-                "Risques juridiques -40%"
-              ]}
-              imageUrl="/images/use-cases/real-estate-3.jpg"
-            />
+            {caseStudies.map((caseStudy, index) => (
+              <CaseStudyCard 
+                key={index}
+                title={caseStudy.title}
+                company={caseStudy.company}
+                results={caseStudy.results}
+                imageUrl={caseStudy.imageUrl}
+              />
+            ))}
           </div>
         </div>
       </section>
