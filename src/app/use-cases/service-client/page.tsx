@@ -1,19 +1,32 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { MessageSquare, Users, Clock, BarChart3, ArrowRight, ChevronRight, Shield, Brain, HeadphonesIcon } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import React from 'react';
 
-const CaseStudyCard = ({ title, company, results, imageUrl }) => (
+interface CaseStudyProps {
+  title: string;
+  company: string;
+  results: string[];
+  imageUrl: string;
+}
+
+const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imageUrl }) => (
   <Card className="h-full">
     <CardContent className="p-6">
-      <div className="mb-4">
-        <img 
+      <div className="mb-4 relative w-full h-48 bg-gray-100">
+        <Image 
           src={imageUrl} 
-          alt={company} 
-          className="w-full h-48 object-cover rounded-lg"
+          alt={`${company} - ${title}`}
+          fill
+          className="object-cover rounded-lg"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = '/images/placeholder.jpg';
+          }}
         />
       </div>
       <div className="space-y-4">
@@ -34,6 +47,39 @@ const CaseStudyCard = ({ title, company, results, imageUrl }) => (
 );
 
 const ServiceClientPage = () => {
+  const caseStudies = [
+    {
+      title: "Support E-commerce",
+      company: "Leader Retail en Ligne",
+      imageUrl: "/images/use-cases/ecommerce-support.png",
+      results: [
+        "Volume tickets -45%",
+        "Satisfaction client +35%",
+        "Coûts opérationnels -30%"
+      ]
+    },
+    {
+      title: "Service Client B2B",
+      company: "Fournisseur Services Pro",
+      imageUrl: "/images/use-cases/b2b-support.png",
+      results: [
+        "Temps réponse -60%",
+        "Résolution premier contact +50%",
+        "Productivité agents +40%"
+      ]
+    },
+    {
+      title: "Support Technique",
+      company: "Éditeur Logiciel SaaS",
+      imageUrl: "/images/use-cases/tech-support.png",
+      results: [
+        "Automatisation +70%",
+        "NPS +25 points",
+        "Base de connaissances optimisée"
+      ]
+    }
+  ];
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -143,36 +189,15 @@ const ServiceClientPage = () => {
             Découvrez comment notre approche RAG transforme le service client à travers ces premiers projets pilotes
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <CaseStudyCard 
-              title="Support E-commerce"
-              company="Leader Retail en Ligne"
-              results={[
-                "Volume tickets -45%",
-                "Satisfaction client +35%",
-                "Coûts opérationnels -30%"
-              ]}
-              imageUrl="/images/use-cases/ecommerce-support.jpg"
-            />
-            <CaseStudyCard 
-              title="Service Client B2B"
-              company="Fournisseur Services Pro"
-              results={[
-                "Temps réponse -60%",
-                "Résolution premier contact +50%",
-                "Productivité agents +40%"
-              ]}
-              imageUrl="/images/use-cases/b2b-support.jpg"
-            />
-            <CaseStudyCard 
-              title="Support Technique"
-              company="Éditeur Logiciel SaaS"
-              results={[
-                "Automatisation +70%",
-                "NPS +25 points",
-                "Base de connaissances optimisée"
-              ]}
-              imageUrl="/images/use-cases/tech-support.jpg"
-            />
+            {caseStudies.map((study, index) => (
+              <CaseStudyCard 
+                key={index}
+                title={study.title}
+                company={study.company}
+                results={study.results}
+                imageUrl={study.imageUrl}
+              />
+            ))}
           </div>
         </div>
       </section>

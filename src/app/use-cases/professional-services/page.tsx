@@ -65,33 +65,33 @@ const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imag
 const ProfessionalServicesPage: React.FC = () => {
   const caseStudies = [
     {
-      title: "Gestion des connaissances",
-      company: "Cabinet de Conseil International",
-      imageUrl: "/images/use-cases/pro-services-1.jpg",
+      title: "Cabinet d'Avocats",
+      company: "Conseil Juridique International",
+      imageUrl: "/images/use-cases/pro-services-1.png",
       results: [
-        "Gain de 12h/consultant/mois",
-        "Réutilisation expertise +60%",
-        "Satisfaction client +40%"
+        "Recherche juridique -60%",
+        "Précision des conseils +40%",
+        "Satisfaction clients +35%"
       ]
     },
     {
-      title: "Transformation digitale",
-      company: "Cabinet d'Avocats",
-      imageUrl: "/images/use-cases/pro-services-2.jpg",
+      title: "Cabinet Comptable",
+      company: "Expert Comptable & Audit",
+      imageUrl: "/images/use-cases/pro-services-2.png",
       results: [
-        "Temps recherche -70%",
-        "Productivité +35%",
-        "Conformité renforcée"
+        "Temps traitement -45%",
+        "Erreurs réduites de 30%",
+        "Productivité +50%"
       ]
     },
     {
-      title: "Innovation collaborative",
-      company: "Société d'Audit Big 4",
-      imageUrl: "/images/use-cases/pro-services-3.jpg",
+      title: "Conseil en Management",
+      company: "Cabinet de Conseil Stratégique",
+      imageUrl: "/images/use-cases/pro-services-3.png",
       results: [
-        "Collaboration +45%",
-        "Qualité livrables +30%",
-        "Time-to-market -25%"
+        "Qualité des livrables +40%",
+        "Délais projets -25%",
+        "ROI client amélioré"
       ]
     }
   ];

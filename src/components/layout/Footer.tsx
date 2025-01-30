@@ -69,7 +69,7 @@ export function Footer() {
                 {new Date().getFullYear()} RAG Solutions. Tous droits réservés.
               </p>
               <Link
-                href="https://linkedin.com/company/rag-solutions"
+                href="https://linkedin.com/company/ragsolutions"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"

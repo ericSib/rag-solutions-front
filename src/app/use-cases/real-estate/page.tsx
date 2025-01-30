@@ -43,33 +43,33 @@ const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imag
 const RealEstatePage = () => {
   const caseStudies = [
     {
-      title: "Gestion de parc résidentiel",
-      company: "Groupe Immobilier National",
-      imageUrl: "/images/use-cases/real-estate-1.jpg",
+      title: "Gestion Locative",
+      company: "Leader Immobilier Résidentiel",
+      imageUrl: "/images/use-cases/real-estate-1.png",
       results: [
-        "Temps réponse locataires -70%",
-        "Efficacité gestion +45%",
-        "Contentieux -30%"
-      ]
-    },
-    {
-      title: "Digitalisation gestion locative",
-      company: "Agence Immobilière Régionale",
-      imageUrl: "/images/use-cases/real-estate-2.jpg",
-      results: [
-        "Traitement demandes +60%",
+        "Temps de réponse -50%",
         "Satisfaction locataires +40%",
-        "Coûts administratifs -25%"
+        "Coûts administratifs -30%"
       ]
     },
     {
-      title: "Conformité réglementaire",
-      company: "Gestionnaire de Copropriétés",
-      imageUrl: "/images/use-cases/real-estate-3.jpg",
+      title: "Property Management",
+      company: "Gestionnaire Multi-Sites",
+      imageUrl: "/images/use-cases/real-estate-2.png",
       results: [
-        "Temps audit divisé par 2",
-        "Mises à jour réglementaires +90%",
-        "Risques juridiques -40%"
+        "Efficacité maintenance +45%",
+        "Délais intervention -35%",
+        "Satisfaction propriétaires +40%"
+      ]
+    },
+    {
+      title: "Promotion Immobilière",
+      company: "Promoteur National",
+      imageUrl: "/images/use-cases/real-estate-3.png",
+      results: [
+        "Ventes sur plan +30%",
+        "Cycle de vente -25%",
+        "ROI marketing amélioré"
       ]
     }
   ];

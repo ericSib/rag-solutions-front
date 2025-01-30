@@ -2,7 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com'],
+    domains: ['ragsolutions.tech'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ragsolutions.tech',
+      },
+    ],
   },
   experimental: {
     serverActions: {

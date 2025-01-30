@@ -50,33 +50,33 @@ const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imag
 const IndustryPage: React.FC = () => {
   const caseStudies = [
     {
-      title: "Optimisation documentation technique",
-      company: "Constructeur Automobile International",
-      imageUrl: "/images/use-cases/industry-1.jpg",
+      title: "Optimisation de la Production",
+      company: "Constructeur Automobile",
+      imageUrl: "/images/use-cases/industry-1.png",
       results: [
-        "Temps de recherche réduit de 65%",
-        "Erreurs de production -45%",
-        "ROI atteint en 8 mois"
+        "Réduction des temps d'arrêt de 30%",
+        "Amélioration de la qualité de 25%",
+        "ROI en moins de 6 mois"
       ]
     },
     {
-      title: "Transformation digitale",
-      company: "PME Industrie de Précision",
-      imageUrl: "/images/use-cases/industry-2.jpg",
+      title: "Maintenance Prédictive",
+      company: "Fabricant d'Équipements",
+      imageUrl: "/images/use-cases/industry-2.png",
       results: [
-        "Onboarding nouveaux -40%",
-        "Productivité maintenance +25%",
-        "Satisfaction employés +35%"
+        "Prévention des pannes +40%",
+        "Coûts de maintenance -35%",
+        "Durée de vie équipements +20%"
       ]
     },
     {
-      title: "Conformité & Qualité",
-      company: "Groupe Manufacturing International",
-      imageUrl: "/images/use-cases/industry-3.jpg",
+      title: "Gestion de la Qualité",
+      company: "Industrie Agroalimentaire",
+      imageUrl: "/images/use-cases/industry-3.png",
       results: [
-        "Temps audit divisé par 2",
-        "Conformité ISO 9001 simplifiée",
-        "Zéro non-conformité majeure"
+        "Conformité réglementaire 100%",
+        "Rappels produits -60%",
+        "Satisfaction client +45%"
       ]
     }
   ];
