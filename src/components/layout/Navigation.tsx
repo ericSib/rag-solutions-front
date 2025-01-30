@@ -38,9 +38,9 @@ const menuItems = [
     submenu: [
       { label: "Industrie", path: "/use-cases/industry" },
       { label: "Gestion immobilière", path: "/use-cases/real-estate" },
-      { label: "Services professionnels", path: "/use-cases/professional" },
+      { label: "Services professionnels", path: "/use-cases/professional-services" },
       { label: "Industrie musicale", path: "/use-cases/music-industry" },
-      { label: "Service client", path: "/use-cases/customer-service" },
+      { label: "Service client", path: "/use-cases/service-client" },
     ],
   },
   {
@@ -79,11 +79,19 @@ export function Navigation() {
                     <DropdownMenuContent align="start">
                       {item.submenu.map((subItem, subIndex) => (
                         <DropdownMenuItem key={subIndex} asChild>
-                          <Link href={subItem.path}>
-                            <span className="w-full cursor-pointer">
-                              {subItem.label}
-                            </span>
-                          </Link>
+                          {subItem.path.startsWith('http') ? (
+                            <a href={subItem.path} target="_blank" rel="noopener noreferrer">
+                              <span className="w-full cursor-pointer">
+                                {subItem.label}
+                              </span>
+                            </a>
+                          ) : (
+                            <Link href={subItem.path}>
+                              <span className="w-full cursor-pointer">
+                                {subItem.label}
+                              </span>
+                            </Link>
+                          )}
                         </DropdownMenuItem>
                       ))}
                     </DropdownMenuContent>
@@ -97,63 +105,56 @@ export function Navigation() {
                 )}
               </div>
             ))}
+            <Link href="/demo">
+              <Button>Demander une démo</Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Toggle menu">
+                <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <nav className="flex flex-col gap-4">
+              <SheetContent side="right" className="w-80">
+                <div className="flex flex-col space-y-4 mt-8">
                   {menuItems.map((item, index) => (
-                    <div key={index} className="flex flex-col gap-2">
+                    <div key={index}>
                       {item.submenu ? (
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" className="w-full justify-between">
-                              {item.label}
-                              <ChevronDown className="h-4 w-4" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent className="w-[calc(300px-2rem)]">
+                        <div className="flex flex-col space-y-2">
+                          <div className="font-semibold">{item.label}</div>
+                          <div className="flex flex-col space-y-2 pl-4">
                             {item.submenu.map((subItem, subIndex) => (
-                              <DropdownMenuItem key={subIndex} asChild>
-                                <Link
-                                  href={subItem.path}
-                                  onClick={() => setIsOpen(false)}
-                                >
-                                  <span className="w-full cursor-pointer">
-                                    {subItem.label}
-                                  </span>
-                                </Link>
-                              </DropdownMenuItem>
+                              <Link
+                                key={subIndex}
+                                href={subItem.path}
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-600 hover:text-gray-900"
+                              >
+                                {subItem.label}
+                              </Link>
                             ))}
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                          </div>
+                        </div>
                       ) : (
-                        <Link href={item.path} onClick={() => setIsOpen(false)}>
-                          <Button variant="ghost" className="w-full justify-start">
-                            {item.label}
-                          </Button>
+                        <Link
+                          href={item.path}
+                          onClick={() => setIsOpen(false)}
+                          className="font-semibold"
+                        >
+                          {item.label}
                         </Link>
                       )}
                     </div>
                   ))}
-                </nav>
+                  <Link href="/demo" onClick={() => setIsOpen(false)}>
+                    <Button className="w-full">Demander une démo</Button>
+                  </Link>
+                </div>
               </SheetContent>
             </Sheet>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <Link href="/demo">
-              <Button className="bg-[#2563EB] hover:bg-[#2563EB]/90 text-white">
-                Demander une démo
-              </Button>
-            </Link>
           </div>
         </div>
       </nav>

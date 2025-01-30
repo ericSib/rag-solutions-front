@@ -7,6 +7,12 @@ import Link from 'next/link';
 import { SiLinkedin } from 'react-icons/si';
 import type { LucideIcon } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Qui sommes-nous | RAG Solutions',
+  description: 'Découvrez l\'expertise RAG Solutions en gestion documentaire éthique et performante. Notre technologie double pipeline révolutionne le traitement de l\'information.'
+};
 
 interface StatCardProps {
   icon: LucideIcon;
@@ -83,14 +89,6 @@ const AboutUsPage: React.FC = () => {
 
   return (
     <div className="w-full">
-      <head>
-        <title>Qui sommes-nous | RAG Solutions</title>
-        <meta 
-          name="description" 
-          content="Découvrez l'expertise RAG Solutions en gestion documentaire éthique et performante. Notre technologie double pipeline révolutionne le traitement de l'information."
-        />
-      </head>
-
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 lg:py-20" role="banner">
         <div className="container mx-auto px-4">
@@ -184,11 +182,11 @@ const AboutUsPage: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center" data-testid="vision-item">
                     <Target className="w-6 h-6 text-blue-600 mr-3" />
-                    <p><strong>1 million</strong> d'organisations accompagnées dans leur transformation numérique</p>
+                    <p><strong>1000+</strong> organisations accompagnées dans leur transformation numérique</p>
                   </div>
                   <div className="flex items-center" data-testid="vision-item">
                     <Leaf className="w-6 h-6 text-green-600 mr-3" />
-                    <p><strong>-50%</strong> d'empreinte carbone sur le traitement de l'information</p>
+                    <p><strong>-40%</strong> d'empreinte carbone sur le traitement de l'information</p>
                   </div>
                   <div className="flex items-center" data-testid="vision-item">
                     <Users className="w-6 h-6 text-blue-600 mr-3" />

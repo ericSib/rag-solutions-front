@@ -1,26 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { Package, Shield, Zap, Users, BarChart3, ArrowRight, ChevronRight } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Scale, Search, Users, Brain, Clock, ArrowRight, ChevronRight } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Services Professionnels | RAG Solutions',
-  description: 'Solutions documentaires intelligentes pour les services professionnels. Optimisez votre capital informationnel avec notre technologie RAG double pipeline.',
-  openGraph: {
-    title: 'Services Professionnels | RAG Solutions',
-    description: 'Solutions documentaires intelligentes pour les services professionnels. Optimisez votre capital informationnel avec notre technologie RAG double pipeline.',
-    images: [
-      {
-        url: '/images/services-banner.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Services Professionnels RAG Solutions',
-      },
-    ],
-  },
+  title: 'Industrie & Manufacturing | RAG Solutions',
+  description: 'Solutions documentaires intelligentes pour l\'industrie et le manufacturing. Optimisez votre documentation technique avec notre technologie RAG double pipeline.',
 };
 
 interface CaseStudyProps {
@@ -34,18 +22,14 @@ const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imag
   <Card className="h-full">
     <CardContent className="p-6">
       <div className="mb-4">
-        <Image 
+        <img 
           src={imageUrl} 
           alt={`${company} - ${title}`}
           className="w-full h-48 object-cover rounded-lg"
         />
       </div>
       <div className="space-y-4">
-        <div 
-          className="inline-flex items-center justify-center rounded-md px-2.5 py-0.5 text-xs font-semibold bg-blue-100 text-blue-700 hover:bg-blue-200"
-        >
-          Projet Pilote
-        </div>
+        <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200">Cas Client</Badge>
         <h3 className="text-xl font-semibold">{title}</h3>
         <p className="text-muted-foreground">{company}</p>
         <div className="space-y-2">
@@ -61,7 +45,7 @@ const CaseStudyCard: React.FC<CaseStudyProps> = ({ title, company, results, imag
   </Card>
 );
 
-export default function ProfessionalServicesPage() {
+const IndustryPage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
@@ -73,35 +57,33 @@ export default function ProfessionalServicesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              Valorisez votre expertise collective
+              Libérez le potentiel de votre documentation technique
             </h1>
             <p className="text-xl text-blue-100 mb-8">
-              Transformez votre capital informationnel en avantage concurrentiel grâce à notre solution RAG double pipeline : 
-              accès précis à vos connaissances et exploration de nouvelles synergies.
+              Optimisez votre patrimoine documentaire industriel grâce à notre solution RAG double pipeline : 
+              exploitation précise et exploration innovante.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Link href="/demo">
-                <Button 
-                  className="bg-white text-blue-600 hover:bg-blue-700 transition-colors duration-200 px-8 py-3 rounded-lg font-semibold inline-flex items-center gap-3"
-                >
-                  <span>Demander une démo</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
+              <Link 
+                href="/demo"
+                className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition"
+              >
+                Demander une démo
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link href="/solutions">
-                <Button
-                  variant="outline"
-                  className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-blue-600 transition-colors duration-200 px-8 py-3 rounded-lg font-semibold inline-flex items-center gap-3"
-                >
-                  <span>Découvrir nos solutions</span>
-                </Button>
+              <Link 
+                href="/solutions"
+                className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+              >
+                Découvrez nos solutions
+                <ArrowRight className="h-5 w-5" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Solutions Section */}
+      {/* Défis & Solutions */}
       <section 
         className="py-16 bg-white"
         role="region"
@@ -109,25 +91,25 @@ export default function ProfessionalServicesPage() {
       >
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Des solutions concrètes pour vos défis quotidiens
+            Des solutions concrètes pour vos défis industriels
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card>
               <CardContent className="p-6">
-                <BookOpen className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Capitalisation des Savoirs</h3>
+                <Package className="w-12 h-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Documentation Technique</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Centralisation des expertises</span>
+                    <span>Accès instantané aux plans et manuels</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Transfert de connaissances facilité</span>
+                    <span>Gestion des révisions et versions</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Préservation de l'historique</span>
+                    <span>Traçabilité des modifications</span>
                   </li>
                 </ul>
               </CardContent>
@@ -135,20 +117,20 @@ export default function ProfessionalServicesPage() {
 
             <Card>
               <CardContent className="p-6">
-                <Scale className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Efficacité Opérationnelle</h3>
+                <Shield className="w-12 h-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Conformité & Qualité</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Réduction du temps de recherche</span>
+                    <span>Respect des normes ISO et réglementations</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Réutilisation des bonnes pratiques</span>
+                    <span>Gestion des procédures qualité</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Automatisation des tâches répétitives</span>
+                    <span>Audit et certification facilités</span>
                   </li>
                 </ul>
               </CardContent>
@@ -156,20 +138,20 @@ export default function ProfessionalServicesPage() {
 
             <Card>
               <CardContent className="p-6">
-                <Brain className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Innovation Collective</h3>
+                <Users className="w-12 h-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Savoir-Faire</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Découverte de synergies</span>
+                    <span>Capitalisation des connaissances</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Collaboration inter-équipes</span>
+                    <span>Formation accélérée des nouveaux</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Intelligence collective augmentée</span>
+                    <span>Préservation expertise seniors</span>
                   </li>
                 </ul>
               </CardContent>
@@ -178,7 +160,7 @@ export default function ProfessionalServicesPage() {
         </div>
       </section>
 
-      {/* Case Studies Section */}
+      {/* Cas Clients */}
       <section 
         className="py-16 bg-gray-50"
         role="region"
@@ -187,44 +169,44 @@ export default function ProfessionalServicesPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">La méthode RAG en action</h2>
           <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
-            Découvrez comment notre approche RAG optimise la gestion des connaissances dans les services professionnels à travers ces premiers projets pilotes
+            Découvrez comment notre approche RAG transforme concrètement la gestion documentaire industrielle à travers ces premiers projets pilotes
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <CaseStudyCard 
-              title="Gestion des connaissances"
-              company="Cabinet de Conseil International"
+              title="Optimisation documentation technique"
+              company="Constructeur Automobile International"
               results={[
-                "Gain de 12h/consultant/mois",
-                "Réutilisation expertise +60%",
-                "Satisfaction client +40%"
+                "Temps de recherche réduit de 65%",
+                "Erreurs de production -45%",
+                "ROI atteint en 8 mois"
               ]}
-              imageUrl="/images/case-study-consulting.jpg"
+              imageUrl="/images/use-cases/industry-1.jpg"
             />
             <CaseStudyCard 
-              title="Recherche juridique"
-              company="Cabinet d'Avocats Régional"
+              title="Transformation digitale"
+              company="PME Industrie de Précision"
               results={[
-                "Temps recherche -50%",
-                "Qualité réponses +45%",
-                "Productivité +25%"
+                "Onboarding nouveaux -40%",
+                "Productivité maintenance +25%",
+                "Satisfaction employés +35%"
               ]}
-              imageUrl="/images/case-study-legal.jpg"
+              imageUrl="/images/use-cases/industry-2.jpg"
             />
             <CaseStudyCard 
-              title="Support client"
-              company="ESN en Croissance"
+              title="Conformité & Qualité"
+              company="Groupe Manufacturing International"
               results={[
-                "Résolution incidents -35%",
-                "Satisfaction client +30%",
-                "Onboarding accéléré -40%"
+                "Temps audit divisé par 2",
+                "Conformité ISO 9001 simplifiée",
+                "Zéro non-conformité majeure"
               ]}
-              imageUrl="/images/case-study-support.jpg"
+              imageUrl="/images/use-cases/industry-3.jpg"
             />
           </div>
         </div>
       </section>
 
-      {/* Impact Metrics Section */}
+      {/* Bénéfices chiffrés */}
       <section 
         className="py-16 bg-white"
         role="region"
@@ -235,16 +217,16 @@ export default function ProfessionalServicesPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card>
               <CardContent className="p-6 text-center">
-                <Clock className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-4xl font-bold text-blue-600 mb-2">-50%</h3>
-                <p className="text-muted-foreground">Temps de recherche d'information</p>
+                <BarChart3 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-4xl font-bold text-blue-600 mb-2">-65%</h3>
+                <p className="text-muted-foreground">Temps de recherche documents</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6 text-center">
-                <Search className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-4xl font-bold text-blue-600 mb-2">+45%</h3>
-                <p className="text-muted-foreground">Précision des réponses</p>
+                <Zap className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-4xl font-bold text-blue-600 mb-2">+40%</h3>
+                <p className="text-muted-foreground">Productivité maintenance</p>
               </CardContent>
             </Card>
             <Card>
@@ -258,7 +240,7 @@ export default function ProfessionalServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section 
         className="py-16 bg-blue-600 text-white"
         role="region"
@@ -266,31 +248,31 @@ export default function ProfessionalServicesPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            Prêt à optimiser votre gestion des connaissances ?
+            Prêt à transformer votre gestion documentaire ?
           </h2>
           <p className="text-xl mb-8">
-            Transformez votre expertise collective en avantage compétitif
+            Nos experts sont là pour vous accompagner dans votre projet
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <Link href="/demo">
-              <Button 
-                className="bg-white text-blue-600 hover:bg-white/90 transition-colors duration-200 px-8 py-3 rounded-lg font-semibold inline-flex items-center gap-3"
-              >
-                <span>Demander une démo</span>
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+            <Link 
+              href="/demo"
+              className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition"
+            >
+              Demander une démo
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-            <Link href="/solutions">
-              <Button
-                variant="outline"
-                className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-blue-600 transition-colors duration-200 px-8 py-3 rounded-lg font-semibold inline-flex items-center gap-3"
-              >
-                <span>Voir nos solutions</span>
-              </Button>
+            <Link 
+              href="/solutions"
+              className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+            >
+              Découvrez nos solutions
+              <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
         </div>
       </section>
     </>
   );
-}
+};
+
+export default IndustryPage;

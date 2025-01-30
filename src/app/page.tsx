@@ -153,8 +153,8 @@ export default function Homepage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-blue-200 hover:bg-blue-50">
-                  <Link href="/contact" className="flex items-center">
-                    Nous contacter
+                  <Link href="https://blog.ragsolutions.tech" className="flex items-center" target="_blank" rel="noopener noreferrer">
+                    Voir le blog
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>

@@ -1,201 +1,140 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, CheckCircle, Zap, Lock, Users, Star, ArrowRight } from 'lucide-react';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Pack ENTERPRISE - RAG Solutions',
-  description: 'Solution sur mesure pour les grandes organisations. Exploitez pleinement votre patrimoine documentaire avec notre technologie RAG avancée.',
-  openGraph: {
-    title: 'Pack ENTERPRISE - RAG Solutions',
-    description: 'Solution sur mesure pour les grandes organisations. Exploitez pleinement votre patrimoine documentaire avec notre technologie RAG avancée.',
-  },
-};
+import { PageLayout } from '@/components/layout/page-layout';
+import { AnimatedSection } from '@/components/ui/animated-section';
 
 export default function EnterprisePackPage() {
   return (
-    <>
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Pack ENTERPRISE <br/>
-          <span className="text-primary">La solution RAG ultime pour votre transformation digitale</span>
-        </h1>
-        
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div>
-            <p className="text-xl mb-6 text-muted-foreground">
-              La solution sur-mesure et évolutive pour les grands groupes souhaitant une transformation globale de leur gestion documentaire, avec un niveau de service et de sécurité sans compromis.
-            </p>
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <Zap className="h-5 w-5 text-primary mr-2" />
-                <span>Volume illimité de documents</span>
-              </li>
-              <li className="flex items-center">
-                <CheckCircle className="h-5 w-5 text-primary mr-2" />
-                <span>Solution entièrement personnalisée</span>
-              </li>
-              <li className="flex items-center">
-                <Lock className="h-5 w-5 text-primary mr-2" />
-                <span>Sécurité et conformité maximales</span>
-              </li>
-              <li className="flex items-center">
-                <Users className="h-5 w-5 text-primary mr-2" />
-                <span>Support et expertise dédiés</span>
-              </li>
-              <li className="flex items-center">
-                <Star className="h-5 w-5 text-primary mr-2" />
-                <span>Innovation et R&D continues</span>
-              </li>
-            </ul>
-          </div>
+    <PageLayout
+      title="Pack ENTERPRISE"
+      description="La solution RAG ultime pour votre transformation digitale"
+    >
+      {/* Hero Section */}
+      <section className="py-20">
+        <div className="container mx-auto">
+          <AnimatedSection animation="fade-up">
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* Left Column - Features */}
+              <div>
+                <h2 className="text-2xl font-semibold mb-6">
+                  La solution sur-mesure et évolutive pour les grands groupes souhaitant une transformation globale de leur gestion documentaire, avec un niveau de service et de sécurité sans compromis.
+                </h2>
+                <div className="space-y-4">
+                  <Feature icon={<Zap className="w-5 h-5" />} text="Volume illimité de documents" />
+                  <Feature icon={<CheckCircle className="w-5 h-5" />} text="Solution entièrement personnalisée" />
+                  <Feature icon={<Lock className="w-5 h-5" />} text="Sécurité et conformité maximales" />
+                  <Feature icon={<Users className="w-5 h-5" />} text="Support et expertise dédiés" />
+                  <Feature icon={<Star className="w-5 h-5" />} text="Innovation et R&D continues" />
+                </div>
+              </div>
 
-          <div className="space-y-8">
+              {/* Right Column - Pricing */}
+              <div className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Setup Initial</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-bold mb-6">Sur devis</div>
+                    <div className="space-y-2">
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Volume illimité de documents" />
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Solution sur mesure" />
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Intégrations multiples" />
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Support dédié" />
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Formation sur site" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Maintenance Mensuelle</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-bold mb-6">Sur devis</div>
+                    <div className="space-y-2">
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Support 24/7" />
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Monitoring temps réel" />
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="Mises à jour continues" />
+                      <Feature icon={<ChevronRight className="w-4 h-4" />} text="SLA : 1h" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Link href="/demo">
+                  <Button className="w-full">
+                    Demander un devis sur mesure
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-12">Services Inclus</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-2xl">Setup Initial</CardTitle>
-                  <div className="text-2xl font-bold text-primary">60 000€</div>
-                </div>
+                <CardTitle>Sécurité Maximale</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Volume illimité de documents
-                  </li>
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Solution sur mesure
-                  </li>
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Intégrations multiples
-                  </li>
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Support dédié
-                  </li>
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Formation sur site
-                  </li>
-                </ul>
+                <div className="space-y-2">
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Audit et hardening continus" />
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Certifications ISO 27001, HDS" />
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Tests d'intrusion réguliers" />
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-2xl">Maintenance Mensuelle</CardTitle>
-                  <div className="text-2xl font-bold text-primary">7 000€</div>
-                </div>
+                <CardTitle>Performance Optimale</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Support 24/7
-                  </li>
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Monitoring temps réel
-                  </li>
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    Mises à jour continues
-                  </li>
-                  <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                    SLA : 1h
-                  </li>
-                </ul>
+                <div className="space-y-2">
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Architecture sur mesure" />
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Haute disponibilité" />
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Plan de reprise d'activité" />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Accompagnement Stratégique</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Conseil en transformation" />
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Co-innovation et R&D" />
+                  <Feature icon={<ChevronRight className="w-4 h-4" />} text="Gouvernance de données" />
+                </div>
               </CardContent>
             </Card>
           </div>
         </div>
+      </section>
+    </PageLayout>
+  );
+}
 
-        <h2 className="text-3xl font-semibold mb-4">Services Inclus</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Sécurité Maximale</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Audit et hardening continus
-                </li>
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Certifications ISO 27001, HDS
-                </li>
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Tests d'intrusion réguliers
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Performance Optimale</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Architecture sur mesure
-                </li>
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Haute disponibilité
-                </li>
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Plan de reprise d'activité
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Accompagnement Stratégique</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Conseil en transformation
-                </li>
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Co-innovation et R&D
-                </li>
-                <li className="flex items-center">
-                  <ChevronRight className="h-5 w-5 text-primary mr-2" />
-                  Gouvernance de données
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-        
-        <div className="mt-12 text-center">
-          <Link 
-            href="/demo" 
-            className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
-          >
-            Demander un devis sur mesure
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-        </div>
+function Feature({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="flex-shrink-0 text-blue-600">
+        {icon}
       </div>
-    </>
+      <span>{text}</span>
+    </div>
   );
 }

@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'RAG Solutions - Gestion Documentaire Intelligente',
   description: 'Solutions RAG pour la gestion documentaire d\'entreprise. Transformez vos documents en intelligence actionnable.',
+  metadataBase: new URL('https://ragsolutions.tech'),
 }
 
 export default function RootLayout({

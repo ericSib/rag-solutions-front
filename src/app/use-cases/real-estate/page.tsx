@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, FileText, Shield, Globe, BarChart3, ArrowRight, ChevronRight, Tags, Search } from 'lucide-react';
+import { Building, FileText, Users, Clock, BarChart3, ArrowRight, ChevronRight, Shield, Search } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
@@ -31,7 +31,7 @@ const CaseStudyCard = ({ title, company, results, imageUrl }) => (
   </Card>
 );
 
-const MusicIndustryPage = () => {
+const RealEstatePage = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -39,11 +39,11 @@ const MusicIndustryPage = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              Optimisez la gestion de vos droits et catalogues
+              Simplifiez votre gestion immobilière grâce à l'intelligence documentaire
             </h1>
             <p className="text-xl text-blue-100 mb-8">
-              Gérez efficacement vos contrats, licences et métadonnées musicales grâce à notre solution RAG double pipeline :
-              conformité simplifiée et exploitation optimisée de votre catalogue.
+              Optimisez la gestion de vos baux, diagnostics et documents réglementaires avec notre solution RAG double pipeline : 
+              accès instantané à l'information et veille réglementaire proactive.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link 
@@ -71,19 +71,19 @@ const MusicIndustryPage = () => {
             <Card>
               <CardContent className="p-6">
                 <FileText className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Gestion des Droits</h3>
+                <h3 className="text-xl font-semibold mb-3">Gestion Documentaire</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Suivi des contrats artistes</span>
+                    <span>Organisation centralisée des baux</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Gestion des licences</span>
+                    <span>Suivi des diagnostics techniques</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Historique des royalties</span>
+                    <span>Archivage réglementaire sécurisé</span>
                   </li>
                 </ul>
               </CardContent>
@@ -91,20 +91,20 @@ const MusicIndustryPage = () => {
 
             <Card>
               <CardContent className="p-6">
-                <Tags className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Métadonnées & Archives</h3>
+                <Shield className="w-12 h-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Conformité & Suivi</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Organisation du catalogue</span>
+                    <span>Veille réglementaire automatisée</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Gestion des assets numériques</span>
+                    <span>Alertes échéances et renouvellements</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Préservation patrimoniale</span>
+                    <span>Traçabilité des actions</span>
                   </li>
                 </ul>
               </CardContent>
@@ -112,20 +112,20 @@ const MusicIndustryPage = () => {
 
             <Card>
               <CardContent className="p-6">
-                <Globe className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Distribution Internationale</h3>
+                <Users className="w-12 h-12 text-blue-600 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Relation Locataires</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Suivi des exploitations</span>
+                    <span>Traitement rapide des demandes</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Conformité territoriale</span>
+                    <span>Historique des échanges</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span>Reporting multi-territoires</span>
+                    <span>Communication centralisée</span>
                   </li>
                 </ul>
               </CardContent>
@@ -139,38 +139,38 @@ const MusicIndustryPage = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">La méthode RAG en action</h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-            Découvrez comment notre approche RAG optimise la gestion des droits et catalogues musicaux à travers ces premiers projets pilotes
+            Découvrez comment notre approche RAG transforme la gestion immobilière à travers ces premiers projets pilotes
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <CaseStudyCard 
-              title="Gestion des droits"
-              company="Label Musical Major"
+              title="Gestion de parc résidentiel"
+              company="Groupe Immobilier National"
               results={[
-                "Gestion droits optimisée 50%",
-                "Revenus streaming +25%",
-                "Litiges -40%"
+                "Temps réponse locataires -70%",
+                "Efficacité gestion +45%",
+                "Contentieux -30%"
               ]}
-              imageUrl="/api/placeholder/800/600"
+              imageUrl="/images/use-cases/real-estate-1.jpg"
             />
             <CaseStudyCard 
-              title="Organisation catalogues"
-              company="Label Indépendant"
+              title="Digitalisation gestion locative"
+              company="Agence Immobilière Régionale"
               results={[
-                "Efficacité administrative +60%",
-                "Temps négociation -30%",
-                "Revenus +20%"
+                "Traitement demandes +60%",
+                "Satisfaction locataires +40%",
+                "Coûts administratifs -25%"
               ]}
-              imageUrl="/api/placeholder/800/600"
+              imageUrl="/images/use-cases/real-estate-2.jpg"
             />
             <CaseStudyCard 
-              title="Distribution internationale"
-              company="Éditeur Musical"
+              title="Conformité réglementaire"
+              company="Gestionnaire de Copropriétés"
               results={[
-                "Suivi territorial amélioré 45%",
-                "Conformité accords +70%",
-                "Reporting optimisé 35%"
+                "Temps audit divisé par 2",
+                "Mises à jour réglementaires +90%",
+                "Risques juridiques -40%"
               ]}
-              imageUrl="/api/placeholder/800/600"
+              imageUrl="/images/use-cases/real-estate-3.jpg"
             />
           </div>
         </div>
@@ -183,21 +183,21 @@ const MusicIndustryPage = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <Card>
               <CardContent className="p-6 text-center">
-                <Music className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-4xl font-bold text-blue-600 mb-2">+50%</h3>
-                <p className="text-gray-600">Efficacité gestion des droits</p>
+                <Clock className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-4xl font-bold text-blue-600 mb-2">-60%</h3>
+                <p className="text-gray-600">Temps de traitement des demandes</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6 text-center">
                 <Search className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-4xl font-bold text-blue-600 mb-2">-40%</h3>
-                <p className="text-gray-600">Litiges et réclamations</p>
+                <h3 className="text-4xl font-bold text-blue-600 mb-2">+45%</h3>
+                <p className="text-gray-600">Efficacité gestion locative</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6 text-center">
-                <Shield className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <Building className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-4xl font-bold text-blue-600 mb-2">6 mois</h3>
                 <p className="text-gray-600">ROI moyen constaté</p>
               </CardContent>
@@ -210,10 +210,10 @@ const MusicIndustryPage = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            Prêt à optimiser la gestion de votre catalogue ?
+            Prêt à révolutionner votre gestion immobilière ?
           </h2>
           <p className="text-xl mb-8">
-            Découvrez comment notre solution peut transformer votre gestion des droits et métadonnées
+            Optimisez la gestion de votre patrimoine avec une solution innovante et responsable
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link 
@@ -233,4 +233,4 @@ const MusicIndustryPage = () => {
   );
 };
 
-export default MusicIndustryPage;
+export default RealEstatePage;

@@ -6,6 +6,8 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
+import { Container } from '@/components/Container';
+import { PageHeader } from '@/components/PageHeader';
 
 export default function ROICalculatorPage() {
   const [step, setStep] = useState(0);
@@ -54,7 +56,7 @@ export default function ROICalculatorPage() {
     },
     {
       title: "Nombre d'Utilisateurs",
-      description: "Utilisateurs accédant aux documents",
+      description: "Utilisateurs qui accèderont au système",
       options: [
         { value: "1-10", label: "1-10 utilisateurs" },
         { value: "10-50", label: "10-50 utilisateurs" },
@@ -69,110 +71,108 @@ export default function ROICalculatorPage() {
       options: [
         { value: "standard", label: "Standard" },
         { value: "advanced", label: "Avancé" },
-        { value: "custom", label: "Sur mesure" }
+        { value: "custom", label: "Personnalisé" }
       ],
       value: security,
       onChange: setSecurity
     },
     {
-      title: "Fréquence d'Accès",
+      title: "Fréquence d'Utilisation",
       description: "Nombre de recherches par mois",
       options: [
         { value: "1-10", label: "1-10 recherches" },
         { value: "10-50", label: "10-50 recherches" },
-        { value: "50-200", label: "50-200 recherches" },
-        { value: "200+", label: "Plus de 200 recherches" }
+        { value: "50+", label: "Plus de 50 recherches" }
       ],
       value: frequency,
       onChange: setFrequency
     }
   ];
 
+  const currentStep = steps[step];
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center mb-8">
-        Calculateur de ROI RAG Solutions
-      </h1>
-      <p className="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-        Estimez le retour sur investissement de notre solution RAG pour votre entreprise
-      </p>
-
-      <div className="max-w-3xl mx-auto">
-        {step < steps.length ? (
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>{steps[step].title}</CardTitle>
-              <p className="text-gray-600">{steps[step].description}</p>
-            </CardHeader>
-            <CardContent>
-              <RadioGroup
-                value={steps[step].value}
-                onValueChange={steps[step].onChange}
-                className="space-y-4"
-              >
-                {steps[step].options.map((option) => (
-                  <div key={option.value} className="flex items-center">
-                    <RadioGroupItem value={option.value} id={option.value} />
-                    <Label htmlFor={option.value} className="ml-2">
-                      {option.label}
-                    </Label>
+    <>
+      <PageHeader
+        title="Calculateur de ROI RAG Solutions"
+        description="Estimez le retour sur investissement de notre solution RAG pour votre entreprise"
+      />
+      <Container className="mt-16 sm:mt-20">
+        <div className="mx-auto max-w-2xl">
+          {step < steps.length ? (
+            <Card>
+              <CardHeader>
+                <CardTitle>{currentStep.title}</CardTitle>
+                <p className="text-sm text-gray-600 mt-1">
+                  {currentStep.description}
+                </p>
+              </CardHeader>
+              <CardContent>
+                <RadioGroup
+                  value={currentStep.value}
+                  onValueChange={currentStep.onChange}
+                  className="gap-4"
+                >
+                  {currentStep.options.map((option) => (
+                    <div key={option.value} className="flex items-center space-x-2">
+                      <RadioGroupItem value={option.value} id={option.value} />
+                      <Label htmlFor={option.value}>{option.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+                <div className="mt-6 flex justify-between">
+                  {step > 0 && (
+                    <Button
+                      variant="outline"
+                      onClick={() => setStep(step - 1)}
+                    >
+                      Précédent
+                    </Button>
+                  )}
+                  <Button
+                    className="ml-auto"
+                    onClick={() => setStep(step + 1)}
+                  >
+                    {step === steps.length - 1 ? 'Calculer' : 'Suivant'}
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <Card>
+              <CardHeader>
+                <CardTitle>Résultats</CardTitle>
+                <p className="text-sm text-gray-600 mt-1">
+                  Voici l'estimation de votre retour sur investissement
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold">Gain de temps</h3>
+                    <p className="text-2xl font-bold text-blue-600">{results.timeSavings} jours/homme/an</p>
                   </div>
-                ))}
-              </RadioGroup>
-            </CardContent>
-          </Card>
-        ) : (
-          <Card>
-            <CardHeader>
-              <CardTitle>Résultats de l'Analyse</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-2xl font-semibold text-primary mb-2">
-                    Gain de temps estimé
-                  </h3>
-                  <p className="text-4xl font-bold">{results.timeSavings} jours/homme/an</p>
+                  <div>
+                    <h3 className="font-semibold">Revenus additionnels</h3>
+                    <p className="text-2xl font-bold text-blue-600">{results.additionalRevenue.toLocaleString()}€/an</p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">ROI estimé</h3>
+                    <p className="text-2xl font-bold text-blue-600">{results.roi}%</p>
+                  </div>
+                  <Button
+                    className="w-full"
+                    onClick={() => setStep(0)}
+                  >
+                    Recommencer
+                  </Button>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-primary mb-2">
-                    Revenus additionnels potentiels
-                  </h3>
-                  <p className="text-4xl font-bold">{results.additionalRevenue.toLocaleString('fr-FR')} €/an</p>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-primary mb-2">ROI estimé</h3>
-                  <p className="text-4xl font-bold">{results.roi}%</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        <div className="flex justify-between mt-8">
-          {step > 0 && (
-            <Button
-              variant="outline"
-              onClick={() => setStep(step - 1)}
-            >
-              Précédent
-            </Button>
+              </CardContent>
+            </Card>
           )}
-          <Button
-            className="ml-auto"
-            onClick={() => step < steps.length - 1 ? setStep(step + 1) : null}
-          >
-            {step < steps.length - 1 ? (
-              <>
-                Suivant
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </>
-            ) : (
-              "Terminer"
-            )}
-          </Button>
         </div>
-      </div>
-    </div>
+      </Container>
+    </>
   );
 }

@@ -23,10 +23,10 @@ const footerLinks = [
   {
     title: "Nos secteurs",
     links: [
-      { label: "Industrie et manufacturing", href: "/sectors/industry" },
-      { label: "Gestion immobilière", href: "/sectors/real-estate" },
-      { label: "Service professionnelle", href: "/sectors/professional" },
-      { label: "Industrie musicale", href: "/sectors/music-industry" },
+      { label: "Industrie et manufacturing", href: "/use-cases/industry" },
+      { label: "Gestion immobilière", href: "/use-cases/real-estate" },
+      { label: "Services professionnels", href: "/use-cases/professional-services" },
+      { label: "Industrie musicale", href: "/use-cases/music-industry" },
     ],
   },
   {

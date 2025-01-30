@@ -151,7 +151,7 @@ const ServiceClientPage = () => {
                 "Satisfaction client +35%",
                 "Coûts opérationnels -30%"
               ]}
-              imageUrl="/api/placeholder/800/600"
+              imageUrl="/images/use-cases/ecommerce-support.jpg"
             />
             <CaseStudyCard 
               title="Service Client B2B"
@@ -161,7 +161,7 @@ const ServiceClientPage = () => {
                 "Résolution premier contact +50%",
                 "Productivité agents +40%"
               ]}
-              imageUrl="/api/placeholder/800/600"
+              imageUrl="/images/use-cases/b2b-support.jpg"
             />
             <CaseStudyCard 
               title="Support Technique"
@@ -171,7 +171,7 @@ const ServiceClientPage = () => {
                 "NPS +25 points",
                 "Base de connaissances optimisée"
               ]}
-              imageUrl="/api/placeholder/800/600"
+              imageUrl="/images/use-cases/tech-support.jpg"
             />
           </div>
         </div>

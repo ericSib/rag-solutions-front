@@ -49,7 +49,7 @@ export default function StarterPackPage() {
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-2xl">Setup Initial</CardTitle>
-                    <div className="text-2xl font-bold text-primary">20 000€</div>
+                    <div className="text-2xl font-bold text-primary">Sur devis</div>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -78,7 +78,7 @@ export default function StarterPackPage() {
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-2xl">Maintenance Mensuelle</CardTitle>
-                    <div className="text-2xl font-bold text-primary">2 500€</div>
+                    <div className="text-2xl font-bold text-primary">Sur devis</div>
                   </div>
                 </CardHeader>
                 <CardContent>

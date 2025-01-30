@@ -49,17 +49,16 @@ export function AnimatedSection({
 
   const getAnimationStyles = () => {
     const baseStyles = 'opacity-0 transition-all duration-700';
-    const delayStyle = `delay-[${delay}ms]`;
 
     switch (animation) {
       case 'fade-up':
-        return `${baseStyles} translate-y-8 ${delayStyle}`;
+        return `${baseStyles} translate-y-8`;
       case 'fade-down':
-        return `${baseStyles} -translate-y-8 ${delayStyle}`;
+        return `${baseStyles} -translate-y-8`;
       case 'fade-left':
-        return `${baseStyles} translate-x-8 ${delayStyle}`;
+        return `${baseStyles} translate-x-8`;
       case 'fade-right':
-        return `${baseStyles} -translate-x-8 ${delayStyle}`;
+        return `${baseStyles} -translate-x-8`;
       default:
         return baseStyles;
     }
@@ -69,6 +68,7 @@ export function AnimatedSection({
     <div
       ref={sectionRef}
       className={cn(getAnimationStyles(), className)}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>
