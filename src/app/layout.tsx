@@ -4,6 +4,7 @@ import { ClientLayout } from '@/components/layout/ClientLayout'
 import { AnimatedLayout } from '@/components/layout/animated-layout';
 import '@/styles/globals.css'
 import { Metadata } from 'next'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'RAG Solutions - Gestion Documentaire Intelligente',
@@ -34,6 +35,13 @@ export default function RootLayout({
           </AnimatedLayout>
         </ClientLayout>
         <Analytics />
+        <Script
+          id="hubspot-script"
+          strategy="afterInteractive"
+          src="//js-eu1.hs-scripts.com/145788507.js"
+          async
+          defer
+        />
       </body>
     </html>
   )
