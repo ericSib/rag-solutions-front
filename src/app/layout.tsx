@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { inter, sourceSans } from '../lib/fonts'
 import { ClientLayout } from '@/components/layout/ClientLayout'
 import { AnimatedLayout } from '@/components/layout/animated-layout';
@@ -32,6 +33,7 @@ export default function RootLayout({
             {children}
           </AnimatedLayout>
         </ClientLayout>
+        <Analytics />
       </body>
     </html>
   )
