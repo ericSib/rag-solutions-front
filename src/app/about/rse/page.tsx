@@ -136,9 +136,9 @@ const RSEPage: React.FC = () => {
     {
       title: "Innovation Responsable",
       metrics: [
-        "5 startups RSE incubées",
-        "3M€ investis en R&D verte",
-        "2 brevets déposés en 2023"
+        "5 partenariats avec des startups RSE incubées",
+        "20% des bénéfices réinvestis en R&D verte",
+        "2 brevets à déposer"
       ],
       icon: Zap
     }
