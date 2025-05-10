@@ -1,0 +1,43 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
+interface ScrollAnimationOptions {
+  threshold?: number;
+  rootMargin?: string;
+}
+
+export function useScrollAnimation(options: ScrollAnimationOptions = {}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Une fois visible, on arrête d'observer
+          if (ref.current) {
+            observer.unobserve(ref.current);
+          }
+        }
+      },
+      {
+        threshold: options.threshold || 0.1,
+        rootMargin: options.rootMargin || '0px',
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [options.threshold, options.rootMargin]);
+
+  return { ref, isVisible };
+}

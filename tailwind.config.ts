@@ -37,10 +37,30 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        enterFromRight: {
+          from: { opacity: '0', transform: 'translateX(200px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
+        enterFromLeft: {
+          from: { opacity: '0', transform: 'translateX(-200px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
+        exitToRight: {
+          from: { opacity: '1', transform: 'translateX(0)' },
+          to: { opacity: '0', transform: 'translateX(200px)' },
+        },
+        exitToLeft: {
+          from: { opacity: '1', transform: 'translateX(0)' },
+          to: { opacity: '0', transform: 'translateX(-200px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'enterFromLeft': 'enterFromLeft 0.25s ease',
+        'enterFromRight': 'enterFromRight 0.25s ease',
+        'exitToLeft': 'exitToLeft 0.25s ease',
+        'exitToRight': 'exitToRight 0.25s ease',
       },
     },
   },

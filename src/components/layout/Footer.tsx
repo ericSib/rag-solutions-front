@@ -1,67 +1,86 @@
-'use client'
+'use client';
 
-import React from 'react';
-import Link from 'next/link';
+import Link from "next/link";
+import { SiLinkedin } from "react-icons/si";
 
-const Footer = () => {
+const footerLinks = [
+  {
+    title: "À propos",
+    links: [
+      { label: "Qui sommes-nous", href: "/about" },
+      { label: "Engagement RSE", href: "/about/rse" },
+      { label: "Contact", href: "/demo" },
+    ],
+  },
+  {
+    title: "Nos solutions",
+    links: [
+      { label: "Pack Starter", href: "/solutions/starter" },
+      { label: "Pack Business", href: "/solutions/business" },
+      { label: "Pack Enterprise", href: "/solutions/enterprise" },
+    ],
+  },
+  {
+    title: "Nos secteurs",
+    links: [
+      { label: "Industrie et manufacturing", href: "/use-cases/industry" },
+      { label: "Gestion immobilière", href: "/use-cases/real-estate" },
+      { label: "Services professionnels", href: "/use-cases/professional-services" },
+      { label: "Industrie musicale", href: "/use-cases/music-industry" },
+    ],
+  },
+  {
+    title: "Légal",
+    links: [
+      { label: "Conditions d'utilisation", href: "/terms-of-service" },
+      { label: "Politique de confidentialité", href: "/privacy-policy" },
+    ],
+  },
+];
+
+export function Footer() {
   return (
-    <footer className="bg-gray-50 border-t">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="font-bold text-lg mb-4">RAG Solutions</h3>
-            <p className="text-gray-600 text-sm">
-              Solutions d'intelligence documentaire basées sur le RAG pour les entreprises.
-            </p>
+    <div className="w-full bg-[#132338]">
+      <footer className="text-white">
+        <div className="container mx-auto py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+            {footerLinks.map((section, index) => (
+              <div key={index}>
+                <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
+                <ul className="space-y-2">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link 
+                        href={link.href}
+                        className="text-gray-400 hover:text-white transition-colors text-sm"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Solutions</h4>
-            <ul className="space-y-2">
-              <li><Link href="/solutions/starter" className="text-gray-600 hover:text-primary">Pack STARTER</Link></li>
-              <li><Link href="/solutions/business" className="text-gray-600 hover:text-primary">Pack BUSINESS</Link></li>
-              <li><Link href="/solutions/enterprise" className="text-gray-600 hover:text-primary">Pack ENTERPRISE</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Ressources</h4>
-            <ul className="space-y-2">
-              <li><Link href="https://blog.ragsolutions.tech" className="text-gray-600 hover:text-primary">Blog</Link></li>
-              <li><Link href="/resources/roi-calculator" className="text-gray-600 hover:text-primary">Calculateur ROI</Link></li>
-              <li><Link href="/resources/how-it-works" className="text-gray-600 hover:text-primary">Comment ça marche</Link></li>
-              <li><Link href="/community" className="text-gray-600 hover:text-primary">Community Hub</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2">
-              <li><a href="mailto:contact@ragsolutions.tech" className="text-gray-600 hover:text-primary">contact@ragsolutions.tech</a></li>
-              <li className="text-gray-600">+33 (0)1 23 45 67 89</li>
-            </ul>
+          <div className="mt-12 pt-8 border-t border-gray-800">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-4">
+              <p className="text-sm text-gray-400">
+                {new Date().getFullYear()} RAG Solutions. Tous droits réservés.
+              </p>
+              <Link
+                href="https://linkedin.com/company/ragsolutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="LinkedIn"
+              >
+                <SiLinkedin className="w-6 h-6" />
+              </Link>
+            </div>
           </div>
         </div>
-
-        <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-600">
-            {new Date().getFullYear()} RAG Solutions. Tous droits réservés.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="text-sm text-gray-600 hover:text-primary">
-              Politique de confidentialité
-            </Link>
-            <Link href="/terms" className="text-sm text-gray-600 hover:text-primary">
-              Conditions d'utilisation
-            </Link>
-            <Link href="/cookies" className="text-sm text-gray-600 hover:text-primary">
-              Cookies
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
-};
-
-export default Footer;
+}
